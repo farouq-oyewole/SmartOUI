@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "355307598766",
+    "firebase_url": "https://bankapp-8deff-default-rtdb.firebaseio.com",
+    "project_id": "bankapp-8deff",
+    "storage_bucket": "bankapp-8deff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355307598766:android:42fa8459b08d94766dce3f",
+        "android_client_info": {
+          "package_name": "com.example.bank_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355307598766-dqhot8gfo1t5ers5hn5en44uceh911rt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGemNDWFVr3Haqjc35ugrk7z20sWHP1SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355307598766-7fvkifge4t0rsspge3j184b9nhd11idr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "355307598766-oni513s772m680kp6qvnthi75qt95811.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bankApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

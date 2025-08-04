@@ -1,0 +1,113 @@
+name: bank_app
+description: >
+  SmartOUI is a secure campus banking app built for OUI (Oduduwa University) students. 
+  It enables fast tuition, hostel, and clearance payments, instant PDF receipts, full transaction history, 
+  and profile management with PIN protection. Simple, smart, and made for students.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+
+  # Firebase
+  firebase_core: ^3.15.1
+  firebase_auth: ^5.6.2
+  cloud_firestore: ^5.6.11
+  firebase_storage: ^12.4.9
+
+  # Utils
+  js: ^0.6.7
+  
+  # UI Components
+  cupertino_icons: ^1.0.2
+  google_nav_bar: ^5.0.6
+  
+  # Networking & HTTP
+  http: ^1.1.0
+  dio: ^5.3.2
+  
+  # Local Storage
+  shared_preferences: ^2.5.3
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  
+  # Utils
+  intl: ^0.20.2
+  uuid: ^4.2.1
+  crypto: ^3.0.6
+  
+  # Payment Integration
+  flutterwave_standard: ^1.0.8
+  
+  # QR Code & PDF
+  qr_flutter: ^4.1.0
+  pdf: ^3.11.3
+  printing: ^5.14.2
+  
+  # Image & Media
+  image_picker: ^1.0.4
+  cached_network_image: ^3.3.0
+  
+  # Charts & Analytics
+  fl_chart: ^1.0.0
+  
+  # Animations
+  lottie: ^3.3.1
+  
+  # Device Info
+  device_info_plus: ^11.5.0
+  
+  # Permissions
+  permission_handler: ^12.0.1
+  firebase_auth_web: ^5.8.13
+  google_sign_in: ^5.4.4
+  convex_bottom_bar: ^3.2.0
+  firebase_database: ^11.3.9
+  audioplayers: ^6.5.0
+  share_plus: ^11.0.0
+  path_provider: ^2.1.5
+  local_auth: ^2.3.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_secure_storage: ^9.2.4
+  encrypt: ^5.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.7
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/google_icon.png
+    - assets/images/apple_icon.png
+    - assets/images/school_logo.png
+    - assets/images/profile.png
+    - assets/images/wema_logo.png
+    - assets/images/access_logo.png
+    - assets/images/zenith_logo.png
+    - assets/sounds/notification.mp3
+    - assets/images/bank_icon.png
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700

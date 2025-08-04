@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>355307598766-oni513s772m680kp6qvnthi75qt95811.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.355307598766-oni513s772m680kp6qvnthi75qt95811</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBkmKXRv5h2kupQMPghQQ3nBNONa-8vfK4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>355307598766</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.bankApp</string>
+	<key>PROJECT_ID</key>
+	<string>bankapp-8deff</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bankapp-8deff.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:355307598766:ios:af2665dd26a9b1d66dce3f</string>
+	<key>DATABASE_URL</key>
+	<string>https://bankapp-8deff-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

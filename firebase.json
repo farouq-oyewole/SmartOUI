@@ -1,0 +1,49 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "bankapp-8deff",
+          "appId": "1:355307598766:android:42fa8459b08d94766dce3f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "bankapp-8deff",
+          "appId": "1:355307598766:ios:af2665dd26a9b1d66dce3f",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "bankapp-8deff",
+          "appId": "1:355307598766:ios:af2665dd26a9b1d66dce3f",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "bankapp-8deff",
+          "configurations": {
+            "android": "1:355307598766:android:42fa8459b08d94766dce3f",
+            "ios": "1:355307598766:ios:af2665dd26a9b1d66dce3f",
+            "macos": "1:355307598766:ios:af2665dd26a9b1d66dce3f",
+            "web": "1:355307598766:web:3dbac791f6c928a56dce3f",
+            "windows": "1:355307598766:web:c94c530fdcc504d16dce3f"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
