@@ -1,6 +1,6 @@
 # bank_app
 
-A new Flutter project.
+A student wallet web app (demo) for Oduduwa University – make fee payments 💳, view receipts 🧾, and manage your finances 📊 securely. 👉 Live Demo: https://bankapp-8deff.web.app/
 
 ## Getting Started
 
