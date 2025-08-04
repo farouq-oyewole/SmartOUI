@@ -10,7 +10,7 @@ SmartOUI is a modern Flutter web app designed specifically for **Oduduwa Univers
 ---
 
 ## 🚀 Live Demo  
-👉 [SmartOUI Live]((https://bankapp-8deff.web.app/))
+👉((https://bankapp-8deff.web.app/))
 
 ---
 
