@@ -1,13 +1,15 @@
+import 'package:bank_app/Pages/event_page.dart';
 import 'package:bank_app/Pages/notifications_page.dart';
-import 'package:bank_app/Pages/updated_registration_page.dart';
+import 'package:bank_app/Pages/prayer_times_page.dart';
+import 'package:bank_app/Pages/quiz_page.dart';
+import 'package:bank_app/Pages/quran_page.dart';
+import 'package:bank_app/Pages/reminders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'providers/theme_provider.dart';
-import 'pages/auth_page.dart';         // Add your actual registration page import
-import 'pages/transactions_page.dart';        // Add your actual transactions page import
-import 'utils/app_theme.dart';
+import 'providers/theme_provider.dart';   
+import 'pages/auth_page.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
@@ -42,20 +44,25 @@ class BankingApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
+    final themeMode = ref.watch(themeModeProvider);   
+    final lightTheme = ref.watch(lightThemeProvider); 
+    final darkTheme = ref.watch(darkThemeProvider);   
 
     return MaterialApp(
       title: 'SmartOUI Banking',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      theme: lightTheme,         
+      darkTheme: darkTheme,     
+      themeMode: themeMode,      
       initialRoute: '/',
       routes: {
         '/': (context) => const AuthPage(),
-        '/register': (context) => const RegistrationPage2(), // Use your actual registration page class
-        '/transactions': (context) => const TransactionsPage(), // Use your actual transactions page class
+        '/quran': (context) => const QuranPage(),
+        '/prayertimes': (context) => const PrayerTimesPage(),
         '/notifications': (context) => const NotificationsPage(),
+        '/quizzes': (context) => QuizzesPage(),
+        '/events': (context) => EventsPage(),
+        '/reminders': (context) => RemindersPage(),
       },
     );
   }

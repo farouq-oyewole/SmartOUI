@@ -79,6 +79,23 @@ dependencies:
     sdk: flutter
   flutter_secure_storage: ^9.2.4
   encrypt: ^5.0.3
+  google_fonts: ^6.3.2
+  prayers_times: ^0.0.6
+  adhan: ^2.0.0+1
+  geolocator: ^14.0.2
+  just_audio: ^0.10.5
+  animate_do: ^4.2.0
+  audio_video_progress_bar: ^2.0.3
+  circular_countdown_timer: ^0.2.4
+  screenshot: ^3.0.0
+  url_launcher: ^6.3.2
+  open_file: ^3.5.10
+  confetti: ^0.8.0
+  animations: ^2.1.0
+  animated_text_kit: ^4.3.0
+  percent_indicator: ^4.2.5
+  flutter_animate: ^4.5.2
+
 
 dev_dependencies:
   flutter_test:
@@ -100,7 +117,12 @@ flutter:
     - assets/images/zenith_logo.png
     - assets/sounds/notification.mp3
     - assets/images/bank_icon.png
-  
+    - assets/images/mssn.png
+    - assets/images/facebook.png
+    - assets/images/google.png
+    - assets/sounds/adhan.mp3
+    - assets/quiz/questions.json
+
   fonts:
     - family: Poppins
       fonts:
@@ -111,3 +133,6 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
+    - family: KFGQPC Uthmanic Script HAFS
+      fonts:
+        - asset: assets/fonts/KFGQPC-Uthmanic-Script-HAFS.ttf

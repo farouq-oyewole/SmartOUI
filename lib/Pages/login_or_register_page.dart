@@ -1,22 +1,21 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:bank_app/Pages/login_page.dart';
+import 'package:bank_app/Pages/register_page.dart';
+import 'package:bank_app/Providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/theme_provider.dart';
 import '../utils/responsive_helper.dart';
-import 'login_page.dart';
-import 'register_page.dart';
 
-class LoginOrRegisterPage extends ConsumerStatefulWidget {
-  const LoginOrRegisterPage({super.key});
+class LoginOrSignupPage extends ConsumerStatefulWidget {
+  const LoginOrSignupPage({super.key});
 
   @override
-  ConsumerState<LoginOrRegisterPage> createState() => _LoginOrRegisterPageState();
+  ConsumerState<LoginOrSignupPage> createState() => _LoginOrSignupPageState();
 }
 
-class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
+class _LoginOrSignupPageState extends ConsumerState<LoginOrSignupPage>
     with TickerProviderStateMixin {
-  // Initially show login page
   bool showLoginPage = true;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -44,7 +43,6 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
     super.dispose();
   }
 
-  // Toggle between login and register page
   void togglePages() {
     _animationController.reverse().then((_) {
       setState(() {
@@ -57,8 +55,6 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
   @override
   Widget build(BuildContext context) {
     final isDarkMode = ref.watch(isDarkModeProvider);
-    // ignore: unused_local_variable
-    final screenSize = MediaQuery.of(context).size;
     final isDesktop = ResponsiveHelper.isDesktop(context);
     final isTablet = ResponsiveHelper.isTablet(context);
 
@@ -70,14 +66,14 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
             end: Alignment.bottomRight,
             colors: isDarkMode
                 ? [
-                    const Color(0xFF1A1A2E),
-                    const Color(0xFF16213E),
-                    const Color(0xFF0F3460),
+                    const Color(0xFF0B3D2E),
+                    const Color(0xFF064E3B),
+                    const Color(0xFF052E21),
                   ]
                 : [
-                    const Color(0xFFF8F9FA),
-                    const Color(0xFFE3F2FD),
-                    const Color(0xFFBBDEFB),
+                    const Color(0xFFE8F5E9),
+                    const Color(0xFFD0F0C0),
+                    const Color(0xFFA5D6A7),
                   ],
           ),
         ),
@@ -93,7 +89,7 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
   Widget _buildDesktopLayout() {
     return Row(
       children: [
-        // Left side - Branding/Info
+        // Branding and Features (Left)
         Expanded(
           flex: 1,
           child: Container(
@@ -109,7 +105,8 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
             ),
           ),
         ),
-        // Right side - Auth form
+
+        // Auth Form (Right)
         Expanded(
           flex: 1,
           child: Container(
@@ -119,7 +116,7 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.green.shade200.withOpacity(0.3),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),
@@ -142,7 +139,7 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.green.shade100.withOpacity(0.3),
               blurRadius: 15,
               offset: const Offset(0, 8),
             ),
@@ -170,31 +167,40 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // App Logo
         Container(
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            color: Colors.green.shade100,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Icon(
-            Icons.account_balance,
-            size: 40,
-            color: Theme.of(context).primaryColor,
-          ),
+          child:Image.asset(
+  'assets/images/mssn.png',
+  width: 80,
+  height: 80,
+  fit: BoxFit.contain,
+)
+
         ),
         const SizedBox(height: 24),
+
+        // App Name
         Text(
-          'SmartOUI Banking',
+          'MSSN_OUI Islamic App',
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                color: Colors.green.shade900,
                 fontWeight: FontWeight.bold,
               ),
         ),
         const SizedBox(height: 8),
+
+        // Subtitle
         Text(
-          'Your trusted financial partner for secure and convenient banking',
+          'Stay connected spiritually — Read Qur’an, track Salah, join events, and grow your Deen.',
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Colors.grey[600],
+                color: Colors.green.shade700,
+                fontSize: 16,
               ),
         ),
       ],
@@ -204,19 +210,24 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
   Widget _buildFeaturesList() {
     final features = [
       {
-        'icon': Icons.security,
-        'title': 'Bank-level Security',
-        'description': 'Your data is protected with enterprise-grade encryption',
+        'icon': Icons.menu_book_rounded,
+        'title': 'Qur’an Reading Progress',
+        'description': 'Continue from where you stopped and mark your memorization.',
       },
       {
-        'icon': Icons.speed,
-        'title': 'Lightning Fast',
-        'description': 'Process transactions in seconds, not minutes',
+        'icon': Icons.access_time_filled,
+        'title': 'Prayer Reminders',
+        'description': 'Get notified when it’s time for Salah, wherever you are.',
       },
       {
-        'icon': Icons.support_agent,
-        'title': '24/7 Support',
-        'description': 'Get help whenever you need it, day or night',
+        'icon': Icons.star_rounded,
+        'title': 'Weekly Challenges',
+        'description': 'Earn credits and climb the leaderboard by participating.',
+      },
+      {
+        'icon': Icons.people_alt_rounded,
+        'title': 'Community Events',
+        'description': 'Stay updated with MSSN_OUI programs and announcements.',
       },
     ];
 
@@ -231,12 +242,12 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  color: Colors.green.shade100,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
                   feature['icon'] as IconData,
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.green.shade800,
                   size: 24,
                 ),
               ),
@@ -249,13 +260,14 @@ class _LoginOrRegisterPageState extends ConsumerState<LoginOrRegisterPage>
                       feature['title'] as String,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.w600,
+                            color: Colors.green.shade900,
                           ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       feature['description'] as String,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[600],
+                            color: Colors.green.shade700,
                           ),
                     ),
                   ],

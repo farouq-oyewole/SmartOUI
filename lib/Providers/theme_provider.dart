@@ -22,7 +22,6 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
       final themeIndex = prefs.getInt(_themeKey) ?? 0;
       state = ThemeMode.values[themeIndex];
     } catch (e) {
-      // If there's an error loading, default to light mode
       state = ThemeMode.light;
     }
   }
@@ -33,7 +32,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
       await prefs.setInt(_themeKey, mode.index);
       state = mode;
     } catch (e) {
-      // Handle error silently
+      // ignore silently
     }
   }
 
@@ -63,26 +62,38 @@ final isSystemModeProvider = Provider<bool>((ref) {
   return themeMode == ThemeMode.system;
 });
 
-// App theme data providers
+// ✅ Pure White Light Theme
 final lightThemeProvider = Provider<ThemeData>((ref) {
   return ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     primarySwatch: Colors.grey,
-    scaffoldBackgroundColor: Colors.grey[50],
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
       elevation: 0,
       centerTitle: true,
     ),
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.black,
-      brightness: Brightness.light,
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Colors.white,
+      selectedItemColor: Colors.black87,
+      unselectedItemColor: Colors.grey,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: Colors.white,
+      indicatorColor: Colors.black.withOpacity(0.1),
+      labelTextStyle: MaterialStateProperty.all(
+        const TextStyle(color: Colors.black87),
+      ),
+    ),
+    colorScheme: const ColorScheme.light(
       primary: Colors.black87,
       secondary: Colors.grey,
       surface: Colors.white,
-      background: Colors.grey[50]!,
+      background: Colors.white,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -91,7 +102,7 @@ final lightThemeProvider = Provider<ThemeData>((ref) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -99,15 +110,16 @@ final lightThemeProvider = Provider<ThemeData>((ref) {
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(color: Colors.grey[300]!),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(color: Colors.black87, width: 2),
+      focusedBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderSide: BorderSide(color: Colors.black87, width: 2),
       ),
       filled: true,
       fillColor: Colors.white,
     ),
     cardTheme: CardThemeData(
       elevation: 2,
+      color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -115,6 +127,7 @@ final lightThemeProvider = Provider<ThemeData>((ref) {
   );
 });
 
+// Dark Theme (unchanged)
 final darkThemeProvider = Provider<ThemeData>((ref) {
   return ThemeData(
     useMaterial3: true,
@@ -127,11 +140,25 @@ final darkThemeProvider = Provider<ThemeData>((ref) {
       elevation: 0,
       centerTitle: true,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.grey[900],
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.grey[500],
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: Colors.grey[900],
+      indicatorColor: Colors.white.withOpacity(0.1),
+      labelTextStyle: MaterialStateProperty.all(
+        const TextStyle(color: Colors.white),
+      ),
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.white,
       brightness: Brightness.dark,
       primary: Colors.white,
-      secondary: Colors.grey[400]!,
+      secondary: Colors.grey,
       surface: Colors.grey[850]!,
       background: Colors.grey[900]!,
     ),
@@ -150,9 +177,9 @@ final darkThemeProvider = Provider<ThemeData>((ref) {
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(color: Colors.grey[600]!),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(color: Colors.white, width: 2),
+      focusedBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderSide: BorderSide(color: Colors.white, width: 2),
       ),
       filled: true,
       fillColor: Colors.grey[800],

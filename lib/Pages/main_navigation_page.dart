@@ -1,12 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:bank_app/Pages/updated_registration_page.dart';
+import 'package:bank_app/Pages/prayer_times_page.dart';
+import 'package:bank_app/Pages/quran_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../Providers/navigation_provider.dart';
 import '../utils/responsive_helper.dart';
 import 'home_page.dart';
-import 'transactions_page.dart';
 import 'profile_page.dart';
 
 class MainNavigationPage extends ConsumerStatefulWidget {
@@ -25,16 +25,16 @@ class _MainNavigationPageState extends ConsumerState<MainNavigationPage> {
       page: const HomePage(),
     ),
     NavigationItem(
-      icon: Icons.compare_arrows_outlined,
-      selectedIcon: Icons.compare_arrows,
-      label: 'Transactions',
-      page: const TransactionsPage(),
+      icon: Icons.mosque_outlined,
+      selectedIcon: Icons.mosque_outlined,
+      label: 'Solah Times',
+      page: const PrayerTimesPage(),
     ),
     NavigationItem(
-      icon: Icons.receipt_long_outlined,
-      selectedIcon: Icons.receipt_long,
-      label: 'Payments',
-      page: const RegistrationPage2(),
+      icon: Icons.menu_book_outlined,
+      selectedIcon: Icons.menu_book_outlined,
+      label: 'Quran',
+      page: const QuranPage(),
     ),
     NavigationItem(
       icon: Icons.person_outline,
@@ -51,29 +51,35 @@ class _MainNavigationPageState extends ConsumerState<MainNavigationPage> {
 
     switch (navigationType) {
       case NavigationType.bottom:
-        return _buildBottomNavigation(selectedIndex);
+        return _buildBottomNavigation(selectedIndex, context);
       case NavigationType.rail:
-        return _buildRailNavigation(selectedIndex);
+        return _buildRailNavigation(selectedIndex, context);
       case NavigationType.drawer:
-        return _buildDrawerNavigation(selectedIndex);
+        return _buildDrawerNavigation(selectedIndex, context);
     }
   }
 
-  Widget _buildBottomNavigation(int selectedIndex) {
+  // ✅ Bottom Navigation using theme colors
+  Widget _buildBottomNavigation(int selectedIndex, BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: _navigationItems[selectedIndex].page,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.grey[600],
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: colorScheme.onSurfaceVariant,
+        backgroundColor: colorScheme.surface,
         showUnselectedLabels: true,
         items: _navigationItems.map((item) {
           final isSelected = _navigationItems.indexOf(item) == selectedIndex;
           return BottomNavigationBarItem(
-            icon: Icon(isSelected ? item.selectedIcon : item.icon),
+            icon: Icon(
+              isSelected ? item.selectedIcon : item.icon,
+              color: isSelected ? colorScheme.primary : colorScheme.onSurfaceVariant,
+            ),
             label: item.label,
           );
         }).toList(),
@@ -81,14 +87,24 @@ class _MainNavigationPageState extends ConsumerState<MainNavigationPage> {
     );
   }
 
-  Widget _buildRailNavigation(int selectedIndex) {
+  // ✅ Rail Navigation (tablet/desktop)
+  Widget _buildRailNavigation(int selectedIndex, BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: Row(
         children: [
           NavigationRail(
             selectedIndex: selectedIndex,
             onDestinationSelected: _onItemTapped,
-            backgroundColor: Theme.of(context).cardColor,
+            backgroundColor: colorScheme.surface,
+            selectedIconTheme: IconThemeData(color: colorScheme.primary),
+            unselectedIconTheme: IconThemeData(color: colorScheme.onSurfaceVariant),
+            selectedLabelTextStyle: TextStyle(
+              color: colorScheme.primary,
+              fontWeight: FontWeight.bold,
+            ),
+            unselectedLabelTextStyle: TextStyle(color: colorScheme.onSurfaceVariant),
             labelType: NavigationRailLabelType.all,
             destinations: _navigationItems.map((item) {
               return NavigationRailDestination(
@@ -105,47 +121,44 @@ class _MainNavigationPageState extends ConsumerState<MainNavigationPage> {
     );
   }
 
-  Widget _buildDrawerNavigation(int selectedIndex) {
+  // ✅ Drawer Navigation using theme
+  Widget _buildDrawerNavigation(int selectedIndex, BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: Row(
         children: [
           Container(
             width: 280,
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 10,
-                  offset: const Offset(2, 0),
-                ),
-              ],
-            ),
+            color: colorScheme.surface,
             child: Column(
               children: [
                 Container(
                   padding: const EdgeInsets.all(24),
+                  color: colorScheme.primary,
                   child: Row(
                     children: [
                       Container(
                         width: 48,
                         height: 48,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor.withOpacity(0.1),
+                          color: colorScheme.onPrimary.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Icon(
                           Icons.account_balance,
-                          color: Theme.of(context).primaryColor,
+                          color: colorScheme.onPrimary,
                           size: 24,
                         ),
                       ),
                       const SizedBox(width: 12),
                       Text(
                         'SmartOUI Banking',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: TextStyle(
+                          color: colorScheme.onPrimary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ],
                   ),
@@ -165,23 +178,21 @@ class _MainNavigationPageState extends ConsumerState<MainNavigationPage> {
                           leading: Icon(
                             isSelected ? item.selectedIcon : item.icon,
                             color: isSelected
-                                ? Theme.of(context).primaryColor
-                                : Colors.grey[600],
+                                ? colorScheme.primary
+                                : colorScheme.onSurfaceVariant,
                           ),
                           title: Text(
                             item.label,
                             style: TextStyle(
                               color: isSelected
-                                  ? Theme.of(context).primaryColor
-                                  : null,
-                              fontWeight: isSelected
-                                  ? FontWeight.w600
-                                  : FontWeight.normal,
+                                  ? colorScheme.primary
+                                  : colorScheme.onSurface,
+                              fontWeight:
+                                  isSelected ? FontWeight.w600 : FontWeight.normal,
                             ),
                           ),
                           selected: isSelected,
-                          selectedTileColor:
-                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          selectedTileColor: colorScheme.primary.withOpacity(0.08),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),

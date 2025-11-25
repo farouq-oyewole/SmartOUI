@@ -1,0 +1,1103 @@
+[
+  {
+    "id": 1,
+    "question": "When was the Prophet Muhammad (sallallahu alayhi wasallam) born?",
+    "options": [
+      "Monday 9th of Rabi ul Awwal (April 22nd 571 AD)",
+      "Sunday 10th of Rabi ul Awwal (April 23rd 572 AD)",
+      "Monday 9th of Shawwal (May 22nd 571 AD)",
+      "Tuesday 8th of Rabi ul Awwal (April 21st 571 AD)"
+    ],
+    "answer": "Monday 9th of Rabi ul Awwal (April 22nd 571 AD)"
+  },
+  {
+    "id": 2,
+    "question": "Where was the Prophet Muhammad (sallallahu alayhi wasallam) born?",
+    "options": [
+      "In Makkah, Saudi Arabia",
+      "In Madinah, Saudi Arabia",
+      "In Yathrib (Madinah), Arabia",
+      "In Taif, Arabia"
+    ],
+    "answer": "In Makkah, Saudi Arabia"
+  },
+  {
+    "id": 3,
+    "question": "What is the name of the Prophet Muhammad’s father?",
+    "options": [
+      "Abdullah ibn Abdul-Muttalib ibn Hashim",
+      "Abd al-Muttalib ibn Hashim",
+      "Abdullah ibn Umar ibn Hashim",
+      "Abd al-Rahman ibn Abdul-Muttalib"
+    ],
+    "answer": "Abdullah ibn Abdul-Muttalib ibn Hashim"
+  },
+  {
+    "id": 4,
+    "question": "What is the name of the Prophet Muhammad’s mother?",
+    "options": [
+      "Aaminah bint Wahab ibn Abd-Manaf ibn Zuhra ibn Kilaab",
+      "Amina bint Wahb ibn Abd-Manaf",
+      "Aaminah bint Wahab ibn Kilaab",
+      "Aisha bint Wahab ibn Zuhra"
+    ],
+    "answer": "Aaminah bint Wahab ibn Abd-Manaf ibn Zuhra ibn Kilaab"
+  },
+  {
+    "id": 5,
+    "question": "When and where did the Prophet Muhammad’s father pass away?",
+    "options": [
+      "He passed away in Yathrib (Madinah) before Muhammad was born",
+      "He passed away in Makkah after Muhammad was born",
+      "He passed away in Taif before Muhammad was born",
+      "He passed away in Yathrib (Madinah) after Muhammad was born"
+    ],
+    "answer": "He passed away in Yathrib (Madinah) before Muhammad was born"
+  },
+  {
+    "id": 6,
+    "question": "What is the name of the Prophet Muhammad’s paternal grandfather and what was his position?",
+    "options": [
+      "Abdul Muttalib, chief of his clan Bani Hashim",
+      "Abdul Muttalib, a merchant of Quraish",
+      "Hashim ibn Abd Manaf, chief of Bani Hashim",
+      "Abdul Muttalib, a scholar of Makkah"
+    ],
+    "answer": "Abdul Muttalib, chief of his clan Bani Hashim"
+  },
+  {
+    "id": 7,
+    "question": "Name the nannies of the Prophet (sallallahu alayhi wasallam).",
+    "options": [
+      "Thuwaybah, Haleemah, Shaymaa & Umm Ayman",
+      "Haleemah, Umm Ayman, Shifa & Thuwaybah",
+      "Thuwaybah, Haleemah, Shifa & Umm Salamah",
+      "Haleemah, Shaymaa, Umm Ayman & Shifa"
+    ],
+    "answer": "Thuwaybah, Haleemah, Shaymaa & Umm Ayman"
+  },
+  {
+    "id": 8,
+    "question": "Who was the midwife of the Prophet (sallallahu alayhi wasallam)?",
+    "options": [
+      "Al-Shifa bint Aouf (Umm Abdul Rahman)",
+      "Umm Ayman bint Thabit",
+      "Al-Shifa bint Abdullah",
+      "Umm Abdul Rahman bint Aouf"
+    ],
+    "answer": "Al-Shifa bint Aouf (Umm Abdul Rahman)"
+  },
+  {
+    "id": 9,
+    "question": "Who named the Prophet Muhammad (sallallahu alayhi wasallam)?",
+    "options": [
+      "His grandfather, Abdul Muttalib",
+      "His mother, Aaminah",
+      "The midwife, Al-Shifa",
+      "His uncle, Abu Talib"
+    ],
+    "answer": "His grandfather, Abdul Muttalib"
+  },
+  {
+    "id": 10,
+    "question": "What did Prophet Muhammad’s mother name him?",
+    "options": [
+      "Ahmad",
+      "Muhammad",
+      "Abdullah",
+      "Ibrahim"
+    ],
+    "answer": "Ahmad"
+  },
+  {
+    "id": 11,
+    "question": "Why did the Prophet Muhammad’s mother choose the name Ahmad?",
+    "options": [
+      "Because she saw an angel in a dream calling the newborn baby Ahmad",
+      "Because it was the family name",
+      "Because the midwife suggested it",
+      "Because the clan chief chose it"
+    ],
+    "answer": "Because she saw an angel in a dream calling the newborn baby Ahmad"
+  },
+  {
+    "id": 12,
+    "question": "What are some of the names that the Prophet called himself?",
+    "options": [
+      "Muhammad, Ahmad, Al-Maahi, Al-Haashir & Al-Aaqib",
+      "Muhammad, Ahmad, Al-Maahi, Al-Amin & Al-Haq",
+      "Muhammad, Ahmad, Al-Rasul, Al-Aaqib & Al-Haadir",
+      "Muhammad, Ahmad, Al-Maahi, Al-Khaleel & Al-Aaqib"
+    ],
+    "answer": "Muhammad, Ahmad, Al-Maahi, Al-Haashir & Al-Aaqib"
+  },
+  {
+    "id": 13,
+    "question": "Did the Prophet have any brothers or sisters?",
+    "options": [
+      "No, he had no siblings, but had 6 foster brothers and 1 foster sister",
+      "Yes, he had two biological siblings",
+      "No, he was the only child and had no foster siblings",
+      "Yes, he had one brother and one sister"
+    ],
+    "answer": "No, he had no siblings, but had 6 foster brothers and 1 foster sister"
+  },
+  {
+    "id": 14,
+    "question": "How old was Muhammad when his mother passed away?",
+    "options": [
+      "Six years old",
+      "Eight years old",
+      "Five years old",
+      "Ten years old"
+    ],
+    "answer": "Six years old"
+  },
+  {
+    "id": 15,
+    "question": "Where did the Prophet Muhammad’s mother take him when he was young?",
+    "options": [
+      "To Yathrib (Madinah) to visit his father's grave and meet his uncles",
+      "To Taif to seek protection",
+      "To Syria for trade",
+      "To Najd for learning"
+    ],
+    "answer": "To Yathrib (Madinah) to visit his father's grave and meet his uncles"
+  },
+  {
+    "id": 16,
+    "question": "Where did the Prophet’s mother pass away?",
+    "options": [
+      "On her way back to Makkah, at Abwa, and was buried there",
+      "In Madinah at her father's house",
+      "In Makkah during childbirth",
+      "In Taif while traveling"
+    ],
+    "answer": "On her way back to Makkah, at Abwa, and was buried there"
+  },
+  {
+    "id": 17,
+    "question": "Who brought Muhammad back to Makkah?",
+    "options": [
+      "His father's servant, Umm Ayman (R.A)",
+      "His uncle Abu Talib",
+      "A caravan merchant",
+      "Khadijah (R.A)"
+    ],
+    "answer": "His father's servant, Umm Ayman (R.A)"
+  },
+  {
+    "id": 18,
+    "question": "Who took care of the Prophet after his mother died?",
+    "options": [
+      "His grandfather Abdul Muttalib",
+      "His uncle Abu Talib",
+      "His aunt Barrah",
+      "The clan chief Hashim"
+    ],
+    "answer": "His grandfather Abdul Muttalib"
+  },
+  {
+    "id": 19,
+    "question": "How long did the Prophet’s grandfather take care of him?",
+    "options": [
+      "For 2 years until Abdul Muttalib died when the Prophet was 8",
+      "For 10 years until the Prophet was 16",
+      "For 5 years until the Prophet was 11",
+      "For 8 years until the Prophet was 13"
+    ],
+    "answer": "For 2 years until Abdul Muttalib died when the Prophet was 8"
+  },
+  {
+    "id": 20,
+    "question": "How was Abdul Muttalib's behavior with Muhammad?",
+    "options": [
+      "He loved him very much and preferred him over his own sons",
+      "He treated him like any other child in the clan",
+      "He was strict and distant",
+      "He sent him away to be raised by foster parents"
+    ],
+    "answer": "He loved him very much and preferred him over his own sons"
+  },
+  {
+    "id": 21,
+    "question": "Who took care of the Prophet after the death of his grandfather Abdul Muttalib?",
+    "options": [
+      "His uncle Abu Talib cared for him and supported him for 42 years",
+      "His uncle Abbas took full charge",
+      "Khadijah (R.A) became his guardian",
+      "The clan elders appointed a guardian"
+    ],
+    "answer": "His uncle Abu Talib cared for him and supported him for 42 years"
+  },
+  {
+    "id": 22,
+    "question": "Which clan was the Prophet from?",
+    "options": [
+      "Banu Haashim and Quraish respectively",
+      "Banu Umayya and Quraish respectively",
+      "Banu Kinanah and Quraysh respectively",
+      "Banu Hashim and Banu Umayya respectively"
+    ],
+    "answer": "Banu Haashim and Quraish respectively"
+  },
+  {
+    "id": 23,
+    "question": "What work did the Prophet do until the age of 40?",
+    "options": [
+      "He used to be a shepherd and also a trader",
+      "He was a full-time scholar",
+      "He served as a clan chieftain",
+      "He was primarily a farmer"
+    ],
+    "answer": "He used to be a shepherd and also a trader"
+  },
+  {
+    "id": 24,
+    "question": "When did Muhammad travel to Syria and with whom?",
+    "options": [
+      "He went to Syria with his uncle Abu Talib when he was 12 for trade",
+      "He went to Syria with Khadijah when he was 20",
+      "He never traveled to Syria",
+      "He went to Syria alone at age 25"
+    ],
+    "answer": "He went to Syria with his uncle Abu Talib when he was 12 for trade"
+  },
+  {
+    "id": 25,
+    "question": "Who was Khadijah (R.A)?",
+    "options": [
+      "She was a wealthy business woman of Makkah",
+      "She was a midwife from Madinah",
+      "She was a slave who later became free",
+      "She was the tribe's schoolmistress"
+    ],
+    "answer": "She was a wealthy business woman of Makkah"
+  },
+  {
+    "id": 26,
+    "question": "Why did Khadijah (R.A) want to marry Muhammad?",
+    "options": [
+      "Because of his truthfulness and good conduct",
+      "Because of his wealth",
+      "Because of family pressure",
+      "Because of his position as clan chief"
+    ],
+    "answer": "Because of his truthfulness and good conduct"
+  },
+  {
+    "id": 27,
+    "question": "At what age did Khadijah (R.A) marry Muhammad?",
+    "options": [
+      "When she was 40 years old",
+      "When she was 30 years old",
+      "When she was 35 years old",
+      "When she was 45 years old"
+    ],
+    "answer": "When she was 40 years old"
+  },
+  {
+    "id": 28,
+    "question": "How old was Muhammad at the time of the marriage to Khadijah?",
+    "options": [
+      "He was 25",
+      "He was 20",
+      "He was 30",
+      "He was 28"
+    ],
+    "answer": "He was 25"
+  },
+  {
+    "id": 29,
+    "question": "What did the Prophet give his wife Khadijah as Mahr (dowry)?",
+    "options": [
+      "Twenty camels",
+      "Thirty camels",
+      "Fifty camels",
+      "Ten camels"
+    ],
+    "answer": "Twenty camels"
+  },
+  {
+    "id": 30,
+    "question": "Was Khadijah (R.A) a widow before she married the Prophet?",
+    "options": [
+      "Yes. The Prophet was her third husband",
+      "No, she had not been married before",
+      "Yes, she had been married once before",
+      "No, she was divorced but not a widow"
+    ],
+    "answer": "Yes. The Prophet was her third husband"
+  },
+  {
+    "id": 31,
+    "question": "How many children did the Prophet have with Khadijah (R.A)?",
+    "options": [
+      "4 daughters and 2 sons (Zainab, Ruqayyah, Ummi Kulthum, Faatimah; Qasim & Abdullah)",
+      "3 daughters and 3 sons",
+      "5 daughters and 1 son",
+      "2 daughters and 4 sons"
+    ],
+    "answer": "4 daughters and 2 sons (Zainab, Ruqayyah, Ummi Kulthum, Faatimah; Qasim & Abdullah)"
+  },
+  {
+    "id": 32,
+    "question": "Did the Prophet have any other children?",
+    "options": [
+      "Yes, one other son named Ibrahim from his servant Maariyah",
+      "No, only the children with Khadijah",
+      "Yes, several from other wives who survived",
+      "Yes, one daughter from another marriage"
+    ],
+    "answer": "Yes, one other son named Ibrahim from his servant Maariyah"
+  },
+  {
+    "id": 33,
+    "question": "Name the 11 wives of the Prophet (listed in the PDF).",
+    "options": [
+      "Khadijah, Sawdah, Aaisha, Hafsah, Zaynab bint Jahsh, Umm Salamah, Zaynab bint Khuzaymah, Juwairiyah, Umm Habeebah, Safiyyah & Maymoonah",
+      "Khadijah, Sawdah, Aisha, Hafsah, Zaynab bint Jahsh, Umm Salamah, Juwairiyah, Umm Habeebah, Safiyyah, Maymoonah & Asma",
+      "Khadijah, Sawdah, Aaisha, Hafsah, Zaynab bint Jahsh, Umm Salamah, Zaynab bint Khuzaymah, Aisha, Juwairiyah, Safiyyah & Maymoonah",
+      "Khadijah, Sawdah, Aaisha, Hafsah, Zaynab bint Jahsh, Umm Salamah, Zaynab bint Khuzaymah, Juwairiyah, Umm Habeebah, Safiyyah & Umm Kulthum"
+    ],
+    "answer": "Khadijah, Sawdah, Aaisha, Hafsah, Zaynab bint Jahsh, Umm Salamah, Zaynab bint Khuzaymah, Juwairiyah, Umm Habeebah, Safiyyah & Maymoonah"
+  },
+  {
+    "id": 34,
+    "question": "Name the son-in-laws of the Prophet.",
+    "options": [
+      "Uthman ibn Affan, Ali ibn Abi Talib & Abul Aas ibn Al-Rabi’",
+      "Uthman ibn Affan, Umar ibn Al-Khattab & Ali ibn Abi Talib",
+      "Abu Bakr, Ali ibn Abi Talib & Uthman ibn Affan",
+      "Ali ibn Abi Talib, Abul Aas ibn Al-Rabi’ & Talha ibn Ubaydullah"
+    ],
+    "answer": "Uthman ibn Affan, Ali ibn Abi Talib & Abul Aas ibn Al-Rabi’"
+  },
+  {
+    "id": 35,
+    "question": "Name the grandchildren of the Prophet (as listed).",
+    "options": [
+      "Ali and Umaamah (Zaynab's); Abdullah (Ruqayyah); Al-Hasan, Al-Hussain, Muhsin, Umm Kulthoom & Zaynab (Faatimah) – Total 8",
+      "Al-Hasan, Al-Hussain, Abdullah, Umaamah, Ali, Umm Kulthoom, Zaynab & Muhsin – Total 8",
+      "Umaamah, Ali, Abdullah, Hasan, Hussain, Muhsin, Zaynab & Fatimah – Total 8",
+      "Ali, Umar, Abdullah, Hasan, Hussain, Muhsin, Umm Kulthoom & Zaynab – Total 8"
+    ],
+    "answer": "Ali and Umaamah (Zaynab's); Abdullah (Ruqayyah); Al-Hasan, Al-Hussain, Muhsin, Umm Kulthoom & Zaynab (Faatimah) – Total 8"
+  },
+  {
+    "id": 36,
+    "question": "Were all the wives of the Prophet widows or divorcees before they married him?",
+    "options": [
+      "Yes, all except Aaisha (r.a.) who he married due to a decree from Allah",
+      "No, all were virgins when they married him",
+      "Yes, all were widows including Aaisha",
+      "No, some were married afterwards but not before"
+    ],
+    "answer": "Yes, all except Aaisha (r.a.) who he married due to a decree from Allah"
+  },
+  {
+    "id": 37,
+    "question": "Name the 6 paternal aunties of the Prophet.",
+    "options": [
+      "Safiyyah, Arwa, Aatiqah, Umm Hakeem al-Baida, Barrah & Umaymah",
+      "Safiyyah, Arwa, Aatiqah, Umm Hakeem, Fatimah & Umaymah",
+      "Safiyyah, Arwa, Aatiqah, Barrah, Umm Kulthoom & Umaymah",
+      "Arwa, Aatiqah, Umm Hakeem, Barrah, Umaymah & Fatimah"
+    ],
+    "answer": "Safiyyah, Arwa, Aatiqah, Umm Hakeem al-Baida, Barrah & Umaymah"
+  },
+  {
+    "id": 38,
+    "question": "Name the grandmothers of the Prophet.",
+    "options": [
+      "Faatimah bint Omar (paternal) & Barrah bint Abdul Uzza (maternal)",
+      "Faatimah bint Omar & Umm Ayman",
+      "Barrah bint Abdul Uzza & Aaminah bint Wahab",
+      "Fatimah bint Omar & Barrah bint Kilaab"
+    ],
+    "answer": "Faatimah bint Omar (paternal) & Barrah bint Abdul Uzza (maternal)"
+  },
+  {
+    "id": 39,
+    "question": "How many times is the name of Muhammad mentioned in the Holy Quran?",
+    "options": [
+      "Four times (3:144, 33:40, 47:2 & 48:29)",
+      "Three times (3:144, 33:40 & 47:2)",
+      "Five times (including a mention in 48:29)",
+      "Twice (in major surahs)"
+    ],
+    "answer": "Four times (3:144, 33:40, 47:2 & 48:29)"
+  },
+  {
+    "id": 40,
+    "question": "How was Muhammad known in his society?",
+    "options": [
+      "Al-Saadiq (The truthful) and Al-Ameen (trustworthy)",
+      "Al-Mutawakkil and Al-Ameen",
+      "Al-Saadiq and Al-Mujahid",
+      "Al-Ameen and Al-Rasul"
+    ],
+    "answer": "Al-Saadiq (The truthful) and Al-Ameen (trustworthy)"
+  },
+  {
+    "id": 41,
+    "question": "How was Muhammad (peace be upon him) recognized in his society?",
+    "options": [
+      "He was known for his honesty and truthfulness — called Al-Ameen and As-Saadiq",
+      "He was known as a poet and storyteller",
+      "He was known for his wealth and authority",
+      "He was known as a warrior from a young age"
+    ],
+    "answer": "He was known for his honesty and truthfulness — called Al-Ameen and As-Saadiq"
+  },
+  {
+    "id": 42,
+    "question": "How old was Muhammad when he helped rebuild the Ka‘bah?",
+    "options": [
+      "He was 35 years old",
+      "He was 25 years old",
+      "He was 40 years old",
+      "He was 30 years old"
+    ],
+    "answer": "He was 35 years old"
+  },
+  {
+    "id": 43,
+    "question": "What dispute arose during the rebuilding of the Ka‘bah?",
+    "options": [
+      "The tribes argued over who would place the Black Stone (Hajr al-Aswad) in its position",
+      "They disagreed about who should design the door",
+      "They fought about which clan would fund the reconstruction",
+      "They argued over the color of the covering"
+    ],
+    "answer": "The tribes argued over who would place the Black Stone (Hajr al-Aswad) in its position"
+  },
+  {
+    "id": 44,
+    "question": "How did Muhammad (PBUH) resolve the dispute of the Black Stone?",
+    "options": [
+      "He suggested placing the stone on a cloth so all chiefs could lift it together",
+      "He placed it himself without consulting anyone",
+      "He delayed the construction until they reached an agreement",
+      "He ordered his uncle to place it"
+    ],
+    "answer": "He suggested placing the stone on a cloth so all chiefs could lift it together"
+  },
+  {
+    "id": 45,
+    "question": "At what age did the Prophet receive the first revelation?",
+    "options": [
+      "At the age of 40",
+      "At the age of 35",
+      "At the age of 45",
+      "At the age of 30"
+    ],
+    "answer": "At the age of 40"
+  },
+  {
+    "id": 46,
+    "question": "In which cave did the first revelation occur?",
+    "options": [
+      "Cave Hira on Mount Noor",
+      "Cave Thawr near Makkah",
+      "Cave Uhud in Madinah",
+      "Cave Qarn in Taif"
+    ],
+    "answer": "Cave Hira on Mount Noor"
+  },
+  {
+    "id": 47,
+    "question": "Who brought the first revelation to the Prophet?",
+    "options": [
+      "Angel Jibreel (Gabriel)",
+      "Angel Israfil",
+      "Angel Mikail",
+      "Angel Malik"
+    ],
+    "answer": "Angel Jibreel (Gabriel)"
+  },
+  {
+    "id": 48,
+    "question": "What were the first revealed words?",
+    "options": [
+      "“Read in the name of your Lord who created.”",
+      "“There is no god but Allah.”",
+      "“O Muhammad, arise and warn.”",
+      "“Say: He is Allah, One.”"
+    ],
+    "answer": "“Read in the name of your Lord who created.”"
+  },
+  {
+    "id": 49,
+    "question": "Who was the first person to believe in the Prophet’s message?",
+    "options": [
+      "Khadijah (R.A)",
+      "Abu Bakr (R.A)",
+      "Ali ibn Abi Talib (R.A)",
+      "Zayd ibn Harithah (R.A)"
+    ],
+    "answer": "Khadijah (R.A)"
+  },
+  {
+    "id": 50,
+    "question": "Who was the first male to accept Islam?",
+    "options": [
+      "Ali ibn Abi Talib (R.A)",
+      "Abu Bakr (R.A)",
+      "Zayd ibn Harithah",
+      "Uthman ibn Affan"
+    ],
+    "answer": "Ali ibn Abi Talib (R.A)"
+  },
+  {
+    "id": 51,
+    "question": "Who was the first freed slave to accept Islam?",
+    "options": [
+      "Zayd ibn Harithah (R.A)",
+      "Bilal ibn Rabah (R.A)",
+      "Ammar ibn Yasir (R.A)",
+      "Suhaib Ar-Rumi (R.A)"
+    ],
+    "answer": "Zayd ibn Harithah (R.A)"
+  },
+  {
+    "id": 52,
+    "question": "Who was the first free man to accept Islam?",
+    "options": [
+      "Abu Bakr As-Siddiq (R.A)",
+      "Uthman ibn Affan (R.A)",
+      "Umar ibn Al-Khattab (R.A)",
+      "Abdul Rahman ibn Awf (R.A)"
+    ],
+    "answer": "Abu Bakr As-Siddiq (R.A)"
+  },
+  {
+    "id": 53,
+    "question": "Who was the first muezzin (caller to prayer) in Islam?",
+    "options": [
+      "Bilal ibn Rabah (R.A)",
+      "Abu Bakr (R.A)",
+      "Ali ibn Abi Talib (R.A)",
+      "Salman Al-Farsi (R.A)"
+    ],
+    "answer": "Bilal ibn Rabah (R.A)"
+  },
+  {
+    "id": 54,
+    "question": "How long did the Prophet preach secretly before proclaiming Islam publicly?",
+    "options": [
+      "3 years",
+      "5 years",
+      "2 years",
+      "7 years"
+    ],
+    "answer": "3 years"
+  },
+  {
+    "id": 55,
+    "question": "What was the name of the hill where the Prophet called his people publicly to Islam?",
+    "options": [
+      "Mount Safa",
+      "Mount Uhud",
+      "Mount Thawr",
+      "Mount Noor"
+    ],
+    "answer": "Mount Safa"
+  },
+  {
+    "id": 56,
+    "question": "Who was the Prophet’s fiercest opponent in his early call to Islam?",
+    "options": [
+      "Abu Lahab",
+      "Abu Jahl",
+      "Utbah ibn Rabi‘ah",
+      "Walid ibn Mughirah"
+    ],
+    "answer": "Abu Lahab"
+  },
+  {
+    "id": 57,
+    "question": "Which Surah was revealed condemning Abu Lahab and his wife?",
+    "options": [
+      "Surah Al-Masad (Surah 111)",
+      "Surah Al-Kafirun",
+      "Surah Al-Fil",
+      "Surah Al-Quraish"
+    ],
+    "answer": "Surah Al-Masad (Surah 111)"
+  },
+  {
+    "id": 58,
+    "question": "Where did the first migration of Muslims take place?",
+    "options": [
+      "Abyssinia (Habasha, modern-day Ethiopia)",
+      "Madinah",
+      "Taif",
+      "Syria"
+    ],
+    "answer": "Abyssinia (Habasha, modern-day Ethiopia)"
+  },
+  {
+    "id": 59,
+    "question": "Who was the ruler that gave refuge to the Muslims in Abyssinia?",
+    "options": [
+      "Negus (An-Najashi)",
+      "Heraclius",
+      "Kisra of Persia",
+      "Pharaoh of Egypt"
+    ],
+    "answer": "Negus (An-Najashi)"
+  },
+  {
+    "id": 60,
+    "question": "How many Muslims migrated to Abyssinia in the first migration?",
+    "options": [
+      "11 men and 4 women",
+      "10 men and 2 women",
+      "15 men and 5 women",
+      "20 men and 10 women"
+    ],
+    "answer": "11 men and 4 women"
+  },
+  {
+    "id": 61,
+    "question": "Who was the Prophet’s uncle that supported him but did not accept Islam?",
+    "options": [
+      "Abu Talib",
+      "Abbas ibn Abdul Muttalib",
+      "Hamzah ibn Abdul Muttalib",
+      "Abu Lahab"
+    ],
+    "answer": "Abu Talib"
+  },
+  {
+    "id": 62,
+    "question": "In which year of Prophethood did Abu Talib and Khadijah (R.A) pass away?",
+    "options": [
+      "In the 10th year of Prophethood — known as the Year of Sorrow (Aam al-Huzn)",
+      "In the 5th year of Prophethood",
+      "In the 7th year of Prophethood",
+      "In the 12th year of Prophethood"
+    ],
+    "answer": "In the 10th year of Prophethood — known as the Year of Sorrow (Aam al-Huzn)"
+  },
+  {
+    "id": 63,
+    "question": "After the deaths of Khadijah and Abu Talib, where did the Prophet travel to seek support?",
+    "options": [
+      "To Taif",
+      "To Madinah",
+      "To Yemen",
+      "To Syria"
+    ],
+    "answer": "To Taif"
+  },
+  {
+    "id": 64,
+    "question": "What happened to the Prophet in Taif?",
+    "options": [
+      "He was mocked and stoned by the people until he bled",
+      "He was warmly welcomed and offered refuge",
+      "He converted the chiefs immediately",
+      "He was imprisoned and then released"
+    ],
+    "answer": "He was mocked and stoned by the people until he bled"
+  },
+  {
+    "id": 65,
+    "question": "Who protected the Prophet upon his return from Taif?",
+    "options": [
+      "Mut‘im ibn ‘Adi",
+      "Abu Bakr (R.A)",
+      "Umar ibn Al-Khattab (R.A)",
+      "Abu Jahl"
+    ],
+    "answer": "Mut‘im ibn ‘Adi"
+  },
+  {
+    "id": 66,
+    "question": "Which miraculous journey took place soon after the events of Taif?",
+    "options": [
+      "Al-Isra’ wal-Mi‘raj (The Night Journey and Ascension)",
+      "The Hijrah to Madinah",
+      "The Battle of Badr",
+      "The Treaty of Hudaybiyyah"
+    ],
+    "answer": "Al-Isra’ wal-Mi‘raj (The Night Journey and Ascension)"
+  },
+  {
+    "id": 67,
+    "question": "From which place did the Night Journey (Isra) begin?",
+    "options": [
+      "From the Ka‘bah in Makkah",
+      "From the cave of Hira",
+      "From Mount Noor",
+      "From his home in Madinah"
+    ],
+    "answer": "From the Ka‘bah in Makkah"
+  },
+  {
+    "id": 68,
+    "question": "To which city did the Prophet travel during the Isra before ascending to the heavens?",
+    "options": [
+      "Jerusalem (Bayt al-Maqdis)",
+      "Madinah",
+      "Syria",
+      "Taif"
+    ],
+    "answer": "Jerusalem (Bayt al-Maqdis)"
+  },
+  {
+    "id": 69,
+    "question": "What was the second part of the miraculous journey called?",
+    "options": [
+      "Mi‘raj — the Ascension to the heavens",
+      "Hijrah — migration to Madinah",
+      "Isra — journey to Jerusalem",
+      "Badr — first battle of Islam"
+    ],
+    "answer": "Mi‘raj — the Ascension to the heavens"
+  },
+  {
+    "id": 70,
+    "question": "During Al-Mi‘raj, which gift was given to the Prophet and his followers?",
+    "options": [
+      "The five daily prayers (Salah)",
+      "The fasting of Ramadan",
+      "The obligation of Zakat",
+      "The command for Hajj"
+    ],
+    "answer": "The five daily prayers (Salah)"
+  },
+  {
+    "id": 71,
+    "question": "Why did the Prophet Muhammad (peace be upon him) migrate from Makkah to Madinah?",
+    "options": [
+      "Due to persecution of the Muslims in Makkah and to establish a safe Islamic state (Hijrah)",
+      "To perform Hajj that year",
+      "To visit relatives and trade",
+      "To escape drought and famine"
+    ],
+    "answer": "Due to persecution of the Muslims in Makkah and to establish a safe Islamic state (Hijrah)"
+  },
+  {
+    "id": 72,
+    "question": "Who accompanied the Prophet during his migration (Hijrah) to Madinah?",
+    "options": [
+      "Abu Bakr As-Siddiq (R.A)",
+      "Umar ibn Al-Khattab (R.A)",
+      "Ali ibn Abi Talib (R.A)",
+      "Zayd ibn Harithah (R.A)"
+    ],
+    "answer": "Abu Bakr As-Siddiq (R.A)"
+  },
+  {
+    "id": 73,
+    "question": "Where did the Prophet and Abu Bakr hide during their journey to Madinah?",
+    "options": [
+      "In the Cave of Thawr",
+      "In the Cave of Hira",
+      "On Mount Uhud",
+      "At the house of Arqam"
+    ],
+    "answer": "In the Cave of Thawr"
+  },
+  {
+    "id": 74,
+    "question": "How did Allah protect the Prophet and Abu Bakr in the cave?",
+    "options": [
+      "Spiders spun webs and pigeons nested at the cave’s entrance, misleading the pursuers",
+      "A sandstorm concealed the cave",
+      "They were guarded by angels visible to Quraysh",
+      "The cave was sealed by rocks"
+    ],
+    "answer": "Spiders spun webs and pigeons nested at the cave’s entrance, misleading the pursuers"
+  },
+  {
+    "id": 75,
+    "question": "What is the Islamic calendar based on?",
+    "options": [
+      "The Hijrah (migration) of the Prophet to Madinah in 622 AD",
+      "The birth of the Prophet",
+      "The conquest of Makkah",
+      "The revelation of the Quran"
+    ],
+    "answer": "The Hijrah (migration) of the Prophet to Madinah in 622 AD"
+  },
+  {
+    "id": 76,
+    "question": "What was the first thing the Prophet did upon reaching Madinah?",
+    "options": [
+      "He built Masjid an-Nabawi (the Prophet’s Mosque)",
+      "He established trade routes",
+      "He appointed governors",
+      "He performed Hajj"
+    ],
+    "answer": "He built Masjid an-Nabawi (the Prophet’s Mosque)"
+  },
+  {
+    "id": 77,
+    "question": "What was the brotherhood established between the Muhajirun and the Ansar called?",
+    "options": [
+      "Mu’akhah (Brotherhood)",
+      "Bay‘ah",
+      "Hijrah pact",
+      "Treaty of Madinah"
+    ],
+    "answer": "Mu’akhah (Brotherhood)"
+  },
+  {
+    "id": 78,
+    "question": "Which document outlined the mutual rights and duties of Muslims and non-Muslims in Madinah?",
+    "options": [
+      "The Constitution (Charter) of Madinah",
+      "Treaty of Hudaybiyyah",
+      "Covenant of Makkah",
+      "Bay‘ah of Aqabah"
+    ],
+    "answer": "The Constitution (Charter) of Madinah"
+  },
+  {
+    "id": 79,
+    "question": "Which was the first battle fought by the Muslims?",
+    "options": [
+      "The Battle of Badr",
+      "The Battle of Uhud",
+      "The Battle of Khandaq",
+      "The Battle of Hunayn"
+    ],
+    "answer": "The Battle of Badr"
+  },
+  {
+    "id": 80,
+    "question": "When was the Battle of Badr fought?",
+    "options": [
+      "In the 2nd year after Hijrah (624 AD)",
+      "In the 1st year after Hijrah (623 AD)",
+      "In the 3rd year after Hijrah (625 AD)",
+      "In the 5th year after Hijrah (627 AD)"
+    ],
+    "answer": "In the 2nd year after Hijrah (624 AD)"
+  },
+  {
+    "id": 81,
+    "question": "How many Muslims participated in the Battle of Badr?",
+    "options": [
+      "313",
+      "500",
+      "1000",
+      "150"
+    ],
+    "answer": "313"
+  },
+  {
+    "id": 82,
+    "question": "Which major battle was fought after Badr?",
+    "options": [
+      "The Battle of Uhud",
+      "The Battle of Hunayn",
+      "The Battle of Khandaq",
+      "The Battle of Tabuk"
+    ],
+    "answer": "The Battle of Uhud"
+  },
+  {
+    "id": 83,
+    "question": "What was the outcome of the Battle of Uhud?",
+    "options": [
+      "The Muslims faced temporary setback due to archers leaving their post",
+      "The Muslims completely defeated the Quraysh",
+      "The battle ended in a treaty",
+      "The Prophet was captured temporarily"
+    ],
+    "answer": "The Muslims faced temporary setback due to archers leaving their post"
+  },
+  {
+    "id": 84,
+    "question": "In which battle did the Prophet’s tooth get injured?",
+    "options": [
+      "Battle of Uhud",
+      "Battle of Badr",
+      "Battle of Hunayn",
+      "Battle of Khandaq"
+    ],
+    "answer": "Battle of Uhud"
+  },
+  {
+    "id": 85,
+    "question": "What was the Battle of the Trench (Khandaq)?",
+    "options": [
+      "A defensive strategy where Muslims dug a trench around Madinah to stop invaders",
+      "A sea battle fought near Yemen",
+      "A rebellion by tribes inside Madinah",
+      "A conflict fought underground"
+    ],
+    "answer": "A defensive strategy where Muslims dug a trench around Madinah to stop invaders"
+  },
+  {
+    "id": 86,
+    "question": "Which companion suggested the trench strategy?",
+    "options": [
+      "Salman Al-Farsi (R.A)",
+      "Umar ibn Al-Khattab (R.A)",
+      "Abu Bakr (R.A)",
+      "Ali ibn Abi Talib (R.A)"
+    ],
+    "answer": "Salman Al-Farsi (R.A)"
+  },
+  {
+    "id": 87,
+    "question": "What was the Treaty of Hudaybiyyah?",
+    "options": [
+      "A 10-year peace treaty between Muslims and Quraysh signed in 6 AH",
+      "A trade agreement with Abyssinia",
+      "A secret alliance with the Jews of Madinah",
+      "A peace deal with the Romans"
+    ],
+    "answer": "A 10-year peace treaty between Muslims and Quraysh signed in 6 AH"
+  },
+  {
+    "id": 88,
+    "question": "When did the Conquest of Makkah take place?",
+    "options": [
+      "In 8 AH (630 AD)",
+      "In 7 AH (629 AD)",
+      "In 9 AH (631 AD)",
+      "In 10 AH (632 AD)"
+    ],
+    "answer": "In 8 AH (630 AD)"
+  },
+  {
+    "id": 89,
+    "question": "How did the Prophet treat the people of Makkah after its conquest?",
+    "options": [
+      "He forgave most of them and declared general amnesty",
+      "He punished all opponents harshly",
+      "He banished them from Makkah",
+      "He imposed heavy taxes"
+    ],
+    "answer": "He forgave most of them and declared general amnesty"
+  },
+  {
+    "id": 90,
+    "question": "Which battle occurred after the Conquest of Makkah?",
+    "options": [
+      "Battle of Hunayn",
+      "Battle of Uhud",
+      "Battle of Tabuk",
+      "Battle of Khaybar"
+    ],
+    "answer": "Battle of Hunayn"
+  },
+  {
+    "id": 91,
+    "question": "What was the last expedition (Ghazwah) led by the Prophet?",
+    "options": [
+      "The Battle of Tabuk",
+      "The Battle of Hunayn",
+      "The Battle of Badr",
+      "The Battle of Khaybar"
+    ],
+    "answer": "The Battle of Tabuk"
+  },
+  {
+    "id": 92,
+    "question": "When did the Prophet perform his only Hajj (Farewell Pilgrimage)?",
+    "options": [
+      "In 10 AH (632 AD)",
+      "In 9 AH (631 AD)",
+      "In 8 AH (630 AD)",
+      "In 7 AH (629 AD)"
+    ],
+    "answer": "In 10 AH (632 AD)"
+  },
+  {
+    "id": 93,
+    "question": "Where did the Prophet deliver his Farewell Sermon?",
+    "options": [
+      "At the plain of Arafah during Hajj",
+      "In Masjid an-Nabawi",
+      "At Mina near the Jamaraat",
+      "At the Ka‘bah in Makkah"
+    ],
+    "answer": "At the plain of Arafah during Hajj"
+  },
+  {
+    "id": 94,
+    "question": "What were the main messages of the Farewell Sermon?",
+    "options": [
+      "Equality, justice, brotherhood, prohibition of interest, respect for women, and the completion of religion",
+      "Rules of inheritance and trade only",
+      "Guidelines for warfare",
+      "The naming of his successor"
+    ],
+    "answer": "Equality, justice, brotherhood, prohibition of interest, respect for women, and the completion of religion"
+  },
+  {
+    "id": 95,
+    "question": "Which verse was revealed during the Farewell Hajj indicating the completion of Islam?",
+    "options": [
+      "“Today I have perfected your religion for you...” (Surah Al-Ma'idah 5:3)",
+      "“Say, He is Allah, One.” (Surah Al-Ikhlas)",
+      "“By the morning brightness...” (Surah Ad-Duha)",
+      "“Read in the name of your Lord...” (Surah Al-‘Alaq)"
+    ],
+    "answer": "“Today I have perfected your religion for you...” (Surah Al-Ma'idah 5:3)"
+  },
+  {
+    "id": 96,
+    "question": "When did the Prophet Muhammad (peace be upon him) pass away?",
+    "options": [
+      "On Monday, 12th Rabi‘ al-Awwal, 11 AH (632 AD)",
+      "On Friday, 10th Muharram, 10 AH",
+      "On Thursday, 5th Ramadan, 11 AH",
+      "On Sunday, 1st Shawwal, 10 AH"
+    ],
+    "answer": "On Monday, 12th Rabi‘ al-Awwal, 11 AH (632 AD)"
+  },
+  {
+    "id": 97,
+    "question": "Where was the Prophet buried?",
+    "options": [
+      "In the room of Aisha (R.A), attached to Masjid an-Nabawi in Madinah",
+      "In Jannat al-Baqi cemetery",
+      "Near Mount Uhud",
+      "In Makkah near the Ka‘bah"
+    ],
+    "answer": "In the room of Aisha (R.A), attached to Masjid an-Nabawi in Madinah"
+  },
+  {
+    "id": 98,
+    "question": "Who was the first Caliph after the Prophet’s death?",
+    "options": [
+      "Abu Bakr As-Siddiq (R.A)",
+      "Umar ibn Al-Khattab (R.A)",
+      "Uthman ibn Affan (R.A)",
+      "Ali ibn Abi Talib (R.A)"
+    ],
+    "answer": "Abu Bakr As-Siddiq (R.A)"
+  },
+  {
+    "id": 99,
+    "question": "How old was the Prophet when he passed away?",
+    "options": [
+      "63 years old",
+      "60 years old",
+      "65 years old",
+      "58 years old"
+    ],
+    "answer": "63 years old"
+  },
+  {
+    "id": 100,
+    "question": "What legacy did the Prophet leave for the Ummah?",
+    "options": [
+      "The Quran and the Sunnah as guidance for all times",
+      "Wealth and property for his family",
+      "A written constitution only",
+      "A chain of rulers to follow him"
+    ],
+    "answer": "The Quran and the Sunnah as guidance for all times"
+  }
+]
+

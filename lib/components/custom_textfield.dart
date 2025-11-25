@@ -5,7 +5,7 @@ import '../providers/theme_provider.dart';
 
 class CustomTextField extends ConsumerStatefulWidget {
   final TextEditingController? controller;
-  final String? initialValue; 
+  final String? initialValue;
   final String hintText;
   final String? labelText;
   final bool obscureText;
@@ -67,10 +67,15 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = ref.watch(isDarkModeProvider);
-    final theme = Theme.of(context);
+
+    final textColor = isDarkMode ? Colors.white : Colors.black;
+    final hintColor = isDarkMode ? Colors.grey[400]! : Colors.grey[600]!;
+    final fillColor = isDarkMode ? Colors.grey[850] : Colors.white;
+    final cursorColor = isDarkMode ? Colors.white : Colors.black;
 
     return TextFormField(
       controller: widget.controller,
+      initialValue: widget.initialValue,
       obscureText: _obscureText,
       keyboardType: widget.keyboardType,
       inputFormatters: widget.inputFormatters,
@@ -83,7 +88,11 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
       maxLength: widget.maxLength,
       autofocus: widget.autofocus,
       focusNode: widget.focusNode,
-      style: theme.textTheme.bodyLarge,
+      cursorColor: cursorColor, // 👈 fixes invisible cursor
+      style: TextStyle(
+        color: textColor,
+        fontSize: 16,
+      ),
       decoration: InputDecoration(
         hintText: widget.hintText,
         labelText: widget.labelText,
@@ -94,7 +103,7 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
             ? IconButton(
                 icon: Icon(
                   _obscureText ? Icons.visibility : Icons.visibility_off,
-                  color: theme.iconTheme.color,
+                  color: isDarkMode ? Colors.white70 : Colors.black54,
                 ),
                 onPressed: () {
                   setState(() {
@@ -105,140 +114,32 @@ class _CustomTextFieldState extends ConsumerState<CustomTextField> {
             : widget.suffixIcon,
         contentPadding: widget.contentPadding ??
             const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        filled: true,
+        fillColor: fillColor,
+        hintStyle: TextStyle(color: hintColor),
+        // ignore: deprecated_member_use
+        labelStyle: TextStyle(color: textColor.withOpacity(0.8)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: theme.dividerColor,
-            width: 1,
-          ),
+          borderSide: BorderSide(color: isDarkMode ? Colors.grey[600]! : Colors.grey[300]!),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: theme.dividerColor,
-            width: 1,
-          ),
+          borderSide: BorderSide(color: isDarkMode ? Colors.grey[600]! : Colors.grey[300]!),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: theme.primaryColor,
-            width: 2,
-          ),
+          borderSide: BorderSide(color: cursorColor, width: 2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: theme.colorScheme.error,
-            width: 1,
-          ),
+          borderSide: const BorderSide(color: Colors.red, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: theme.colorScheme.error,
-            width: 2,
-          ),
-        ),
-        filled: true,
-        fillColor: isDarkMode 
-            ? Colors.grey[800] 
-            : Colors.grey[50],
-        hintStyle: theme.textTheme.bodyLarge?.copyWith(
-          color: theme.hintColor,
-        ),
-        labelStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: theme.hintColor,
+          borderSide: const BorderSide(color: Colors.red, width: 2),
         ),
       ),
-    );
-  }
-}
-
-// Specialized text fields for common use cases
-class AmountTextField extends ConsumerWidget {
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
-  final void Function(String)? onChanged;
-  final String currency;
-
-  const AmountTextField({
-    super.key,
-    this.controller,
-    this.validator,
-    this.onChanged,
-    this.currency = '₦',
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return CustomTextField(
-      controller: controller,
-      hintText: 'Enter amount',
-      labelText: 'Amount',
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
-      ],
-      validator: validator,
-      onChanged: onChanged,
-      prefixIcon: const Icon(Icons.attach_money),
-    );
-  }
-}
-
-class EmailTextField extends ConsumerWidget {
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
-  final void Function(String)? onChanged;
-
-  const EmailTextField({
-    super.key,
-    this.controller,
-    this.validator,
-    this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return CustomTextField(
-      controller: controller,
-      hintText: 'Enter your email',
-      labelText: 'Email',
-      keyboardType: TextInputType.emailAddress,
-      validator: validator,
-      onChanged: onChanged,
-      prefixIcon: const Icon(Icons.email_outlined),
-    );
-  }
-}
-
-class PasswordTextField extends ConsumerWidget {
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
-  final void Function(String)? onChanged;
-  final String? hintText;
-  final String? labelText;
-
-  const PasswordTextField({
-    super.key,
-    this.controller,
-    this.validator,
-    this.onChanged,
-    this.hintText,
-    this.labelText,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return CustomTextField(
-      controller: controller,
-      hintText: hintText ?? 'Enter your password',
-      labelText: labelText ?? 'Password',
-      obscureText: true,
-      validator: validator,
-      onChanged: onChanged,
-      prefixIcon: const Icon(Icons.lock_outline),
     );
   }
 }

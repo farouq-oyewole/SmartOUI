@@ -96,6 +96,8 @@ class PrimaryButton extends ConsumerWidget {
   final VoidCallback? onPressed;
   final bool isLoading;
   final Widget? icon;
+  final Color? color;
+  final double? width;
 
   const PrimaryButton({
     super.key,
@@ -103,20 +105,65 @@ class PrimaryButton extends ConsumerWidget {
     this.onPressed,
     this.isLoading = false,
     this.icon,
+    this.color,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return CustomButton(
-      text: text,
-      onPressed: onPressed,
-      isLoading: isLoading,
-      icon: icon,
-      width: double.infinity,
+    final theme = Theme.of(context);
+    final Color primaryColor = color ?? const Color(0xFF007A33); // MSSN Green
+    final bool isDisabled = isLoading || onPressed == null;
+
+    return SizedBox(
+      width: width ?? double.infinity,
+      height: 50,
+      child: ElevatedButton(
+        onPressed: isDisabled ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: isDisabled
+              ? primaryColor.withOpacity(0.6)
+              : primaryColor,
+          foregroundColor: Colors.white,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 250),
+          child: isLoading
+              ? const SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.8,
+                    color: Colors.white,
+                  ),
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (icon != null) ...[
+                      icon!,
+                      const SizedBox(width: 8),
+                    ],
+                    Text(
+                      text,
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.3,
+                      ),
+                    ),
+                  ],
+                ),
+        ),
+      ),
     );
   }
 }
-
 class SecondaryButton extends ConsumerWidget {
   final String text;
   final VoidCallback? onPressed;

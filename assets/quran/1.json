@@ -1,0 +1,32 @@
+{
+  "verses": [
+    {
+      "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+      "english": "In the name of Allah, the Most Gracious, the Most Merciful."
+    },
+    {
+      "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+      "english": "All praise is due to Allah, Lord of the worlds."
+    },
+    {
+      "arabic": "الرَّحْمَٰنِ الرَّحِيمِ",
+      "english": "The Most Gracious, the Most Merciful."
+    },
+    {
+      "arabic": "مَالِكِ يَوْمِ الدِّينِ",
+      "english": "Master of the Day of Judgment."
+    },
+    {
+      "arabic": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+      "english": "You alone we worship, and You alone we ask for help."
+    },
+    {
+      "arabic": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+      "english": "Guide us on the straight path."
+    },
+    {
+      "arabic": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+      "english": "The path of those who have received Your grace; not the path of those who have brought down wrath upon themselves, nor of those who have gone astray."
+    }
+  ]
+}

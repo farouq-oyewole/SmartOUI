@@ -21,15 +21,17 @@ class AuthPage extends ConsumerWidget {
 
     if (isLoading) return const AuthLoadingScreen();
 
+    // if user not logged in, show login/signup
     if (appUser == null) {
-      return const LoginOrRegisterPage();
+      return const LoginOrSignupPage();
     }
 
-    // If user's name or phone number is incomplete, show setup
+    // if user profile is incomplete
     if (appUser.name.isEmpty || appUser.phoneNumber == null) {
       return const UserSetupPage();
     }
 
+    // otherwise go to main navigation
     return const MainNavigationPage();
   }
 }
@@ -47,18 +49,10 @@ class AuthLoadingScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 100,
+            // 🔹 Replaceable logo
+            Image.asset(
+              'assets/images/mssn.png', // your preferred local logo
               height: 100,
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.1),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.account_balance,
-                size: 50,
-                color: Theme.of(context).primaryColor,
-              ),
             ),
             const SizedBox(height: 32),
             CircularProgressIndicator(
@@ -67,14 +61,15 @@ class AuthLoadingScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Banking App',
+              'MSSN OUI',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: Theme.of(context).primaryColor,
                   ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Loading your account...',
+              'Preparing your Islamic dashboard...',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -112,10 +107,8 @@ class _UserSetupPageState extends ConsumerState<UserSetupPage> {
       await ref.read(authNotifierProvider.notifier).updateUserProfile(
             name: _nameController.text.trim(),
             phoneNumber: _phoneController.text.trim(),
-    );
+          );
 
-
-      // Refresh user data
       ref.invalidate(currentAppUserProvider);
     } catch (e) {
       if (mounted) {
@@ -147,18 +140,10 @@ class _UserSetupPageState extends ConsumerState<UserSetupPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Container(
-                      width: 100,
+                    // 🔹 Replaceable logo
+                    Image.asset(
+                      'assets/images/mssn.png',
                       height: 100,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.account_balance,
-                        size: 50,
-                        color: Theme.of(context).primaryColor,
-                      ),
                     ),
                     const SizedBox(height: 32),
                     Text(
@@ -170,7 +155,7 @@ class _UserSetupPageState extends ConsumerState<UserSetupPage> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Welcome ${appUser?.email ?? 'User'}!\nLet\'s set up your banking profile to get started.',
+                      'As-salamu Alaykum, ${appUser?.email ?? 'dear user'}!\nLet’s complete your MSSN OUI profile to get started.',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: Colors.grey[600],
                           ),
@@ -183,15 +168,16 @@ class _UserSetupPageState extends ConsumerState<UserSetupPage> {
                       labelText: 'Full Name',
                       prefixIcon: const Icon(Icons.person_outline),
                       validator: (value) {
-                        final validation = ValidationService.validateName(value ?? '');
+                        final validation =
+                            ValidationService.validateName(value ?? '');
                         return validation.isValid ? null : validation.firstError;
                       },
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       controller: _phoneController,
-                      hintText: 'Enter your phone number',
-                      labelText: 'Phone Number (Optional)',
+                      hintText: 'Enter your phone number (optional)',
+                      labelText: 'Phone Number',
                       keyboardType: TextInputType.phone,
                       prefixIcon: const Icon(Icons.phone_outlined),
                       validator: (value) {

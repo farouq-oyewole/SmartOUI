@@ -54,8 +54,6 @@ class AuthService {
           id: credential.user!.uid,
           name: name,
           email: email,
-          balance: 1000.0, // Starting balance
-          cardNumber: _generateCardNumber(),
           createdAt: DateTime.now(),
           updatedAt: DateTime.now(), transactionPin: 'transactionPin',
         );
@@ -212,11 +210,7 @@ class AuthService {
   // Get user email
   String? get userEmail => _auth.currentUser?.email;
 
-  // Generate random card number
-  String _generateCardNumber() {
-    final random = DateTime.now().millisecondsSinceEpoch % 1000000;
-    return random.toString().padLeft(6, '0');
-  }
+
 
   // Handle Firebase Auth exceptions
   Exception _handleAuthException(FirebaseAuthException e) {

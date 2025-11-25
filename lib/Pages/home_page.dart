@@ -1,16 +1,21 @@
+// lib/pages/home_page.dart
+// Full complete HomePage that uses the models & providers above.
+// Replace your existing HomePage with this file (adjust import paths if needed).
+
 // ignore_for_file: deprecated_member_use
 
 import 'dart:convert';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:bank_app/Providers/auth_provider.dart';
+import 'package:bank_app/Providers/last_read_quran_provider.dart';
+
 import 'package:bank_app/Providers/notification_provider.dart';
-import 'package:bank_app/components/transaction_history.dart';
+import 'package:bank_app/Providers/recent_events_provider.dart';
+import 'package:bank_app/components/animated_credit_card.dart';
+import 'package:bank_app/components/recent_events_section.dart';
 import 'package:bank_app/models/user_model.dart';
-import 'package:bank_app/providers/balance_provider.dart';
 import 'package:bank_app/providers/theme_provider.dart';
-import 'package:bank_app/providers/transaction_provider.dart';
-import 'package:bank_app/utils/formatters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,15 +28,13 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
-  bool isObscured = true;
   final AudioPlayer _audioPlayer = AudioPlayer();
   late final ProviderSubscription<int> _notificationSub;
 
   @override
   void initState() {
     super.initState();
-
-    // Properly listen to notification count changes
+    // Listen to unread notifications and play a sound when it increases
     _notificationSub = ref.listenManual<int>(
       unreadNotificationsCountProvider,
       (previous, next) {
@@ -44,7 +47,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   void dispose() {
-    _notificationSub.close(); // Prevent memory leak
+    _notificationSub.close();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -52,46 +56,85 @@ class _HomePageState extends ConsumerState<HomePage> {
     try {
       await _audioPlayer.play(AssetSource('sounds/notification.mp3'));
     } catch (e) {
-      debugPrint('Sound playback error: $e');
+      debugPrint('Notification play error: $e');
+    }
+  }
+
+  Future<void> _pickAndUpdateImage() async {
+    try {
+      final picker = ImagePicker();
+      final picked = await picker.pickImage(source: ImageSource.gallery, imageQuality: 70);
+      if (picked != null) {
+        final bytes = await File(picked.path).readAsBytes();
+        final base64String = base64Encode(bytes);
+
+        // Update via your auth notifier (assumes updateUserPhoto exists and accepts base64)
+        await ref.read(authNotifierProvider.notifier).updateUserPhoto(
+              imageData: base64String,
+              isLocalFile: true,
+            );
+
+        ref.invalidate(currentAppUserProvider);
+      }
+    } catch (e) {
+      debugPrint('Image pick error: $e');
+      ref.read(notificationProvider.notifier).showError('Image Error', e.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final appUser = ref.watch(currentAppUserProvider);
-    final isDarkMode = ref.watch(isDarkModeProvider);
-    final unreadCount = ref.watch(unreadNotificationsCountProvider);
-    final transactionListAsync = ref.watch(transactionsProvider);
+    final AppUser? appUser = ref.watch(currentAppUserProvider);
+    final bool isDarkMode = ref.watch(isDarkModeProvider);
+    final int unreadCount = ref.watch(unreadNotificationsCountProvider);
+
+    // ignore: unused_local_variable
+    final recentEvents = ref.watch(recentEventProvider);
+    ref.watch(lastReadQuranProvider);
+    ref.watch(recentEventProvider);
+
+    final Color surfaceBg = isDarkMode ? Colors.grey[900]! : Colors.grey[50]!;
+    final Color primary = const Color(0xFF2E7D32);
 
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.grey[900] : Colors.white,
+      backgroundColor: surfaceBg,
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
+            // refresh user & providers if needed
             ref.invalidate(currentAppUserProvider);
-            ref.invalidate(balanceProvider);
-            ref.invalidate(transactionsProvider);
+            // no-op: events are local; but you could also re-fetch from remote here
+            await Future.delayed(const Duration(milliseconds: 300));
           },
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              _buildHeader(context, appUser?.name ?? 'User', unreadCount, appUser?.photoUrl),
+              _buildHeader(context, appUser, unreadCount),
               const SizedBox(height: 20),
-              _buildBalanceCard(context, appUser),
+
+              // Animated credit card (existing component)
+              const AnimatedCreditCard(),
+              const SizedBox(height: 20),
+
+              // Action buttons (two rows, two per row)
+              _buildActionsSection(context, primary, isDarkMode),
               const SizedBox(height: 24),
-              const _ActionButtons(),
-              const SizedBox(height: 24),
-              transactionListAsync.when(
-                data: (transactions) {
-                  final recent = transactions.take(3).toList();
-                  return TransactionHistory(
-                    transactions: recent,
-                    onSeeAll: () => Navigator.pushNamed(context, '/transactions'),
-                  );
-                },
-                loading: () => const Center(child: CircularProgressIndicator()),
-                error: (error, _) => Center(child: Text("Error: $error")),
-              ),
+
+              // Recent Events (uses eventsProvider -> recentEventsProvider)
+            RecentEventsSection(
+  onSeeAll: () {
+    Navigator.pushNamed(context, '/events');
+  },
+  limit: 1, // ✅ Only one event shown
+),
+
+             const SizedBox(height: 18),
+
+              // Last Read Quran Verse section
+              _buildLastReadQuranSection(context, isDarkMode),
+
+
+              const SizedBox(height: 40),
             ],
           ),
         ),
@@ -99,17 +142,26 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 
-  Widget _buildHeader(BuildContext context, String name, int notifications, String? photoUrl) {
-    final isDark = ref.watch(isDarkModeProvider);
+  // ----- HEADER -----
+  Widget _buildHeader(BuildContext context, AppUser? appUser, int notifications) {
+    final bool isDark = ref.watch(isDarkModeProvider);
+    final textColor = isDark ? Colors.white : Colors.black87;
+
+    ImageProvider avatar;
+    if (appUser?.photoUrl?.isNotEmpty ?? false) {
+      avatar = MemoryImage(base64Decode(appUser!.photoUrl!));
+    } else {
+      avatar = const AssetImage('assets/images/profile.png');
+    }
+
     return Row(
       children: [
         GestureDetector(
-          onTap: () => _pickAndUpdateImage(ref),
+          onTap: _pickAndUpdateImage,
           child: CircleAvatar(
-            radius: 24,
-            backgroundImage: photoUrl != null
-                ? MemoryImage(base64Decode(photoUrl))
-                : const AssetImage("assets/images/profile.png") as ImageProvider,
+            radius: 28,
+            backgroundImage: avatar,
+            backgroundColor: Colors.transparent,
           ),
         ),
         const SizedBox(width: 12),
@@ -118,41 +170,51 @@ class _HomePageState extends ConsumerState<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Good Morning!',
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: isDark ? Colors.grey[300] : Colors.grey[700],
-                    ),
+                'As-salamu alaykum 👋',
+                style: TextStyle(
+                  color: isDark ? Colors.grey[300] : Colors.grey[700],
+                  fontSize: 14,
+                ),
               ),
+              const SizedBox(height: 4),
               Text(
-                name,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+                appUser?.displayName ?? 'Member',
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ],
           ),
         ),
         Stack(
+          clipBehavior: Clip.none,
           children: [
             IconButton(
               onPressed: () => Navigator.pushNamed(context, '/notifications'),
               icon: Icon(
                 Icons.notifications_none_rounded,
-                size: 27,
-                color: isDark ? Colors.white : Colors.black87,
+                size: 28,
+                color: isDark ? Colors.white : Colors.black54,
               ),
             ),
             if (notifications > 0)
               Positioned(
-                top: 8,
-                right: 8,
+                top: 6,
+                right: 6,
                 child: Container(
-                  padding: const EdgeInsets.all(2),
-                  decoration: const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                  constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 1.3),
+                  ),
+                  constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
                   child: Text(
                     notifications > 9 ? '9+' : notifications.toString(),
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                    style: const TextStyle(
+                        color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -163,223 +225,224 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 
-  Widget _buildBalanceCard(BuildContext context, AppUser? user) {
-    final theme = Theme.of(context);
-    final primaryColor = theme.primaryColor;
-    final masked = '₦•••••••';
+  // ----- ACTIONS (two rows, two per row) -----
+  Widget _buildActionsSection(BuildContext context, Color primary, bool isDark) {
+  final double screenWidth = MediaQuery.of(context).size.width;
+  final double cardWidth = (screenWidth - 56) / 2; // slightly smaller for spacing
+  final Color cardColor = isDark ? Colors.grey[850]! : Colors.white;
 
-    if (user == null) return const Center(child: CircularProgressIndicator());
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _actionCard(
+            context,
+            width: cardWidth,
+            icon: Icons.quiz,
+            label: 'Quizzes',
+            route: '/quizzes',
+            cardColor: cardColor,
+            primary: primary,
+            isDark: isDark,
+          ),
+          _actionCard(
+            context,
+            width: cardWidth,
+            icon: Icons.calendar_today,
+            label: 'Events',
+            route: '/events',
+            cardColor: cardColor,
+            primary: primary,
+            isDark: isDark,
+          ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _actionCard(
+            context,
+            width: cardWidth,
+            icon: Icons.menu_book,
+            label: 'Quran',
+            route: '/quran',
+            cardColor: cardColor,
+            primary: primary,
+            isDark: isDark,
+          ),
+          _actionCard(
+            context,
+            width: cardWidth,
+            icon: Icons.notifications,
+            label: 'Reminders',
+            route: '/reminders',
+            cardColor: cardColor,
+            primary: primary,
+            isDark: isDark,
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
-    return Container(
-      padding: const EdgeInsets.all(20),
+Widget _actionCard(
+  BuildContext context, {
+  required double width,
+  required IconData icon,
+  required String label,
+  required String route,
+  required Color cardColor,
+  required Color primary,
+  required bool isDark,
+}) {
+  return InkWell(
+    onTap: () => Navigator.pushNamed(context, route),
+    borderRadius: BorderRadius.circular(14),
+    child: Container(
+      width: width,
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
       decoration: BoxDecoration(
-        color: primaryColor,
-        borderRadius: BorderRadius.circular(20),
+        color: cardColor,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: Colors.grey.withOpacity(0.08)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 6,
-            offset: const Offset(2, 2),
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 5,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Balance", style: TextStyle(color: Colors.white70)),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              Text(
-                isObscured ? masked : Formatters.formatCurrency(user.balance),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(width: 10),
-              GestureDetector(
-                onTap: () => setState(() => isObscured = !isObscured),
-                child: Icon(
-                  isObscured ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.white,
-                ),
-              ),
-            ],
+          CircleAvatar(
+            radius: 22, // smaller icon bubble
+            backgroundColor: primary,
+            child: Icon(icon, color: Colors.white, size: 22),
           ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Text(
-                _formatCardNumber(user.cardNumber),
-                style: const TextStyle(color: Colors.white70),
-              ),
-              const Spacer(),
-              const Icon(Icons.credit_card, color: Colors.amber),
-              const SizedBox(width: 6),
-              const Icon(Icons.circle, size: 16, color: Colors.red),
-              const Icon(Icons.circle, size: 16, color: Colors.orange),
-            ],
+          const SizedBox(height: 10),
+          Text(
+            label,
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 13.5, // smaller text
+              color: isDark ? Colors.white : Colors.black87,
+            ),
           ),
         ],
       ),
-    );
-  }
-
-  String _formatCardNumber(String cardNumber) {
-    if (cardNumber.isEmpty) return '•••• •••• •••• ••••';
-    return cardNumber.length >= 4
-        ? '•••• •••• •••• ${cardNumber.substring(cardNumber.length - 4)}'
-        : '•••• •••• •••• ••••';
-  }
-
-  Future<void> _pickAndUpdateImage(WidgetRef ref) async {
-    final picker = ImagePicker();
-    final picked = await picker.pickImage(source: ImageSource.gallery);
-    if (picked != null) {
-      final bytes = await File(picked.path).readAsBytes();
-      final base64String = base64Encode(bytes);
-      await ref.read(authNotifierProvider.notifier).updateUserPhoto(
-            imageData: base64String,
-            isLocalFile: true,
-          );
-      ref.invalidate(currentAppUserProvider);
-    }
-  }
+    ),
+  );
 }
 
-class _ActionButtons extends ConsumerWidget {
-  const _ActionButtons();
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final primaryColor = theme.primaryColor;
-    final isDark = ref.watch(isDarkModeProvider);
 
-    final actions = [
-      {"icon": Icons.school, "label": "School Fees", "amount": 245000},
-      {"icon": Icons.local_hospital, "label": "Medical Fee", "amount": 10000},
-      {"icon": Icons.hotel, "label": "Hostel Fee", "amount": 98000},
-      {"icon": Icons.verified_user, "label": "Clearance", "amount": 100000},
-    ];
 
-    final Map<String, String> _bankAccounts = {
-      'School Fees_Wema Bank': '0122275995',
-      'School Fees_Zenith Bank': '1012183291',
-      'Hostel Fee_Wema Bank': '0122275995',
-      'Hostel Fee_Zenith Bank': '1012183291',
-    };
+  // ----- LAST READ QURAN SECTION -----
+Widget _buildLastReadQuranSection(BuildContext context, bool isDark) {
+  return Consumer(
+    builder: (context, ref, child) {
+      // Watch the lastReadQuranProvider
+      final lastRead = ref.watch(lastReadQuranProvider);
 
-    final Map<String, String> _bankLogos = {
-      'Wema Bank': 'assets/images/wema_logo.png',
-      'Zenith Bank': 'assets/images/zenith_logo.png',
-    };
-
-    void _showBankSelectionDialog(String feeType, int amount) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          backgroundColor: isDark ? Colors.grey[850] : Colors.white,
-          title: Text(
-            'Select Bank for $feeType',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: isDark ? Colors.white : Colors.black,
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Card(
+            color: isDark ? Colors.grey[900] : Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: ['Wema Bank', 'Zenith Bank'].map((bank) {
-              final key = '${feeType}_$bank';
-              final accountNumber = _bankAccounts[key] ?? '';
-              final logoPath = _bankLogos[bank];
-
-              return Card(
-                elevation: 3,
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                color: isDark ? Colors.blueGrey[700] : Colors.blue[50],
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                child: ListTile(
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      logoPath ?? '',
-                      width: 36,
-                      height: 36,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  title: Text(
-                    bank,
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                  subtitle: Text('Account: $accountNumber'),
-                  onTap: () {
-                    Navigator.pop(context); // Close dialog
-                    Navigator.pushNamed(context, '/register', arguments: {
-                      'feeType': feeType,
-                      'amount': amount,
-                      'bankName': bank,
-                      'accountNumber': accountNumber,
-                    });
-                  },
-                ),
-              );
-            }).toList(),
-          ),
-        ),
-      );
-    }
-
-    return Center(
-      child: Wrap(
-        spacing: 16,
-        runSpacing: 16,
-        alignment: WrapAlignment.center,
-        children: actions.map((action) {
-          final label = action['label'] as String;
-          final amount = action['amount'] as int;
-
-          return GestureDetector(
-            onTap: () {
-              if (label == 'School Fees' || label == 'Hostel Fee') {
-                _showBankSelectionDialog(label, amount);
-              } else {
-                Navigator.pushNamed(context, '/register', arguments: {
-                  'feeType': label,
-                  'amount': amount,
-                });
-              }
-            },
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.4,
-              child: Row(
+            elevation: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundColor: primaryColor,
-                    child: Icon(action["icon"] as IconData, color: Colors.white),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      label,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: isDark ? Colors.white : Colors.black87,
+                  // 🟢 HEADER ROW
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.menu_book,
+                              color: Colors.green[800], size: 20),
+                          const SizedBox(width: 8),
+                          Text(
+                            "Last Read Qur’an Verse",
+                            style: TextStyle(
+                              color: Colors.green[800],
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(context, '/quran'),
+                        child: Text(
+                          "See All",
+                          style: TextStyle(
+                            color: Colors.green[800],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+
+                  const SizedBox(height: 12),
+
+                  // 🟡 CONTENT SECTION
+                  if (lastRead == null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 4),
+                      child: Text(
+                        "You haven't read anything yet. Open the Qur’an page to start reading.",
+                        style: TextStyle(
+                          color: isDark ? Colors.grey[300] : Colors.grey[700],
+                          fontStyle: FontStyle.italic,
+                          fontSize: 15,
+                        ),
+                      ),
+                    )
+                  else
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 🕌 Surah + Ayah Info
+                        Text(
+                          "${lastRead.surahName} — Ayah ${lastRead.verseNumber}",
+                          style: TextStyle(
+                            color: Colors.green[800],
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+
+                        // 🕋 Verse Text
+                        Text(
+                          lastRead.translation,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Amiri',
+                          ),
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),
-          );
-        }).toList(),
-      ),
-    );
-  }
+          ),
+        ],
+      );
+    },
+  );
+}
 }
